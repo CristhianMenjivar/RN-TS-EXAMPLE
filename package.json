@@ -8,7 +8,15 @@
     "ios:14": "npx react-native run-ios --simulator='iPhone 14 Pro'",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
+    "clean": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules/ && yarn cache clean && yarn install",
+    "clean:a": "cd android && ./gradlew clean && cd ..",
+    "pod": "npx pod-install ios",
+    "remove:app": "adb shell pm uninstall com.name_app",
+    "apk": "cd android && ./gradlew clean && cd .. && cd ./android/app/  && chmod +x gradlew && ./gradlew assembleRelease && cd ../../",
+    "build:a": "cd android && ./gradlew clean && cd .. && cd ./android/app/  && ./gradlew assembleRelease && ./gradlew bundleRelease && cd ../../"
+ 
   },
   "dependencies": {
     "@react-native-community/geolocation": "^3.0.1",
