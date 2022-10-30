@@ -23,9 +23,10 @@ const useShareViewShot = ({
   captureOptions,
   shareOptions,
 }: UseShareViewShot = initialData) => {
-  const viewShotRef = useRef();
+  const viewShotRef = useRef<any>();
 
   const handleShare = () => {
+    console.log('Tomando!');
     captureRef(viewShotRef, {
       ...captureOptions,
     }).then((uri) => {
